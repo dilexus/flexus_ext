@@ -1,0 +1,51 @@
+{
+
+  "generic": {
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK",
+    "cancel": "Cancel"
+  },
+
+  "auth": {
+    "sign_in": "Sign In",
+    "sign_up": "Sign Up",
+    "sign_out": "Sign Out",
+    "dont_have_an_account": "Don't have an account?",
+    "already_have_an_account": "Already have an account?",
+    "or_register_with_email": "Or sign up with email",
+    "or_login_with": "Or sign in with",
+    "forgot": "Forgot?",
+    "forgot_password": "Forgot Password",
+    "email_to_reset_password": "Please enter your email address to reset the password",
+    "reset_password": "Reset Password",
+    "reset_password_success": "Please check your email for reset password link. Once you reset the password, use your new password for sign in",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "confirm_password_not_matching": "Password and confirm password are not matching",
+    "email_verification": "Email Address Verification",
+    "verify_email": "Verify Email Address",
+    "i_have_verified_my_email": "I Have Verified My Email Address",
+    "thank_you_for_verifying_email": "Thank you for verifying your email address. You will be signed in to the app now",
+    "verify_email_message": "Your email address needs to be verified prior to sign in. Please verify your email address by clicking the link that is sent to your email. Once it is verified click on the I have verified my email address button",
+    "email_not_verified_yet": "Your email address is not verified yet. Please wait few seconds and try again if you have already verified your email address",
+    "sign_out_confirmation": "Are you sure you want to sign out?"
+  },
+
+  "auth_errors": {
+   "no_user_found" : "There is no user record corresponding to this email address.",
+    "wrong_password" : "The password is invalid or the user does not have a password",
+    "weak_password" : "The password provided is too weak",
+    "account_already_exist" : "The account already exists for that email",
+    "account_exist_with_same_email" : "An account already exists with the same email address but different front-in credentials. Sign in in using a provider associated with this email address",
+    "sign_in_failure" : "Sign in failure",
+    "reset_password_failed": "Failed to reset the password",
+    "google_sign_in_failed": "Failed to front in with Google.",
+    "facebook_sign_in_failed": "Failed to front in with Facebook.",
+    "facebook_sign_in_canceled": "Failed to front in with Facebook.",
+    "too_many_requests": "Too many requests to verify the email. Please try again in a while"
+  }
+
+}

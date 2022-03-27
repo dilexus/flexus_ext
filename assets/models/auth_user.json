@@ -1,0 +1,8 @@
+{
+  "id": "Dilan Perera",
+  "name": "Dilan Perera",
+  "email": "dilan@example.com",
+  "emailVerified": true,
+  "provider": "facebook",
+  "photoURL": "https://example.com/profilepic.jpg"
+}
