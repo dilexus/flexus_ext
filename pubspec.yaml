@@ -1,6 +1,6 @@
 name: flexus_ext
 description: A new Flutter project.
-version: 1.0.3+6
+version: 1.0.4+7
 homepage:
 
 publish_to: 'none'
@@ -13,11 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  #Flexus Core
-  flexus_core:
-    git:
-      url: https://github.com/dilexus/flexus_core.git
-      ref: v1.0.11
+
 
 #  flexus_core:
 #    path: ../flexus_core/
