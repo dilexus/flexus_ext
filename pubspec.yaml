@@ -23,7 +23,7 @@ dependencies:
   network_to_file_image: ^3.1.0
 
   #Firebase
-  firebase_auth: ^3.3.11
+  firebase_auth: ^3.3.12
 
   #UI
   font_awesome_flutter: ^10.1.0
