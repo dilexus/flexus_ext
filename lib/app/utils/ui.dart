@@ -10,10 +10,11 @@ import '../../flexus.dart';
 
 class FxUIUtil {
   getAuthInputDecorator(String labelText,
-      {Widget? icon, Widget? prefix, Widget? suffix}) {
+      {Widget? icon, Widget? prefix, Widget? suffix, Color? prefixIconColor}) {
     return InputDecoration(
       labelText: labelText,
       prefixIcon: icon,
+      prefixIconColor: prefixIconColor,
       prefix: prefix,
       suffix: suffix,
       contentPadding: const EdgeInsets.all(16),
@@ -62,13 +63,13 @@ class FxUIUtil {
     return SizedBox(
         height: 48.0,
         child: ElevatedButton(
-            child: Icon(iconData, color: Get.theme.colorScheme.primary),
+            child: Icon(iconData, color: Get.theme.colorScheme.secondary),
             style: ElevatedButton.styleFrom(
-              primary: Get.theme.colorScheme.tertiary,
+              primary: Get.theme.colorScheme.background,
               elevation: 0,
               shape: RoundedRectangleBorder(
                 side: BorderSide(
-                    width: 1.0, color: Get.theme.colorScheme.primary),
+                    width: 1.0, color: Get.theme.colorScheme.secondary),
                 borderRadius: BorderRadius.circular(8.0),
               ),
             ),

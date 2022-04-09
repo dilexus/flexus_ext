@@ -1,6 +1,6 @@
 name: flexus_ext
 description: A new Flutter project.
-version: 1.0.8+11
+version: 1.0.9+12
 homepage:
 
 publish_to: 'none'
@@ -19,11 +19,11 @@ dependencies:
   #Dev
   logger: ^1.1.0
   get: ^4.6.1
-  package_info_plus: ^1.4.0
+  package_info_plus: ^1.4.2
   network_to_file_image: ^3.1.0
 
   #Firebase
-  firebase_auth: ^3.3.12
+  firebase_auth: ^3.3.13
 
   #UI
   font_awesome_flutter: ^10.1.0

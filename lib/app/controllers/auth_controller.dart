@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -24,7 +25,7 @@ class AuthController extends GetxController {
         await _signInWithGoogle(loginType, success, failed);
         break;
       case LoginType.apple:
-        // TODO: Handle this case.
+        await _signInWithFacebook(loginType, success, failed);
         break;
       case LoginType.email:
         // TODO: Handle this case.
@@ -118,6 +119,34 @@ class AuthController extends GetxController {
           await FirebaseAuth.instance.signInWithCredential(credential);
       final user = userCredential.user;
       _onAuthSuccess(loginType, onAuthSuccess, null, user!);
+    } catch (ex) {
+      _onAuthFailed(loginType, onAuthFailed, ex);
+    }
+  }
+
+  _signInWithFacebook(LoginType loginType, OnAuthSuccess onAuthSuccess,
+      OnAuthFailed onAuthFailed) async {
+    try {
+      final LoginResult result = await FacebookAuth.instance.login();
+      UserCredential userCredential;
+      switch (result.status) {
+        case LoginStatus.success:
+          AuthCredential credential =
+              FacebookAuthProvider.credential(result.accessToken!.token);
+          userCredential =
+              await FirebaseAuth.instance.signInWithCredential(credential);
+          final user = userCredential.user;
+          break;
+        case LoginStatus.cancelled:
+          _onAuthFailed(loginType, onAuthFailed,
+              Exception("Facebook login is cancelled"));
+          break;
+        case LoginStatus.failed:
+          _onAuthFailed(
+              loginType, onAuthFailed, Exception("Facebook login is failed"));
+          break;
+        default:
+      }
     } catch (ex) {
       _onAuthFailed(loginType, onAuthFailed, ex);
     }
