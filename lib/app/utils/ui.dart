@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flexus_ext/app/enums/login_type.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -16,6 +17,7 @@ class FxUIUtil {
       {Widget? icon, Widget? prefix, Widget? suffix, Color? prefixIconColor}) {
     return InputDecoration(
       labelText: labelText,
+      floatingLabelBehavior: FloatingLabelBehavior.always,
       prefixIcon: icon,
       prefixIconColor: prefixIconColor,
       prefix: prefix,
@@ -77,6 +79,80 @@ class FxUIUtil {
               ),
             ),
             onPressed: () => onPressed(loginType)));
+  }
+
+  Widget getTextDropDown(BuildContext context,
+      {required String name,
+      required String label,
+      required String hint,
+      required Icon icon,
+      required List<String> items,
+      required String? Function(String?) validators,
+      bool enabled = true,
+      bool allowClear = false,
+      String initialValue = "",
+      EdgeInsets padding = const EdgeInsets.only(top: 12.0, bottom: 12.0)}) {
+    return Padding(
+      padding: padding,
+      child: FormBuilderDropdown(
+        name: name,
+        initialValue: initialValue,
+        decoration: InputDecoration(
+          labelStyle: TextStyle(
+            color: enabled
+                ? Get.theme.colorScheme.onBackground
+                : Get.theme.disabledColor,
+          ),
+          labelText: label,
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Get.theme.colorScheme.secondary),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Get.theme.colorScheme.onBackground),
+          ),
+          border: const OutlineInputBorder(borderSide: BorderSide()),
+          contentPadding: const EdgeInsets.all(12.0),
+          prefixIcon: icon,
+        ),
+        allowClear: allowClear,
+        hint: Text(
+          hint,
+          style: TextStyle(color: Get.theme.colorScheme.onBackground),
+        ),
+        style: TextStyle(
+          color: Get.theme.colorScheme.onBackground,
+        ),
+        validator: validators,
+        enabled: enabled,
+        dropdownColor: Get.theme.colorScheme.background,
+        items: items
+            .map((val) => DropdownMenuItem(
+                  value: val,
+                  child: Text(val),
+                ))
+            .toList(),
+      ),
+    );
+  }
+
+  Widget getTextBox(BuildContext context,
+      {required String name,
+      required String label,
+      required Icon icon,
+      required String? Function(String?) validators,
+      bool obscureText = false,
+      EdgeInsets padding = const EdgeInsets.only(top: 12.0, bottom: 12.0)}) {
+    return Padding(
+      padding: padding,
+      child: FormBuilderTextField(
+          name: name,
+          decoration: Fx.instance.uiUtil.getAuthInputDecorator(
+            label,
+            icon: icon,
+          ),
+          obscureText: obscureText,
+          validator: validators),
+    );
   }
 
   Widget getProfileCircularAvatar(
