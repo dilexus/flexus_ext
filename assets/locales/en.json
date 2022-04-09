@@ -46,6 +46,10 @@
     "facebook_sign_in_failed": "Failed to front in with Facebook.",
     "facebook_sign_in_canceled": "Failed to front in with Facebook.",
     "too_many_requests": "Too many requests to verify the email. Please try again in a while"
+  },
+
+  "dialogs": {
+    "crop_image" : "Crop Image"
   }
 
 }

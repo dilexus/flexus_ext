@@ -28,6 +28,10 @@ dependencies:
   #UI
   font_awesome_flutter: ^10.1.0
 
+  #Image
+  image_picker: ^0.8.5
+  image_cropper: ^1.5.1
+
   #Auth
   crypto: ^3.0.1
   google_sign_in: ^5.2.4

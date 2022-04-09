@@ -213,17 +213,32 @@ class AuthController extends GetxController {
     Fx.instance.log.i("User sign out success");
   }
 
-  AuthUser _getAuthUser(User user) {
+  AuthUser _getAuthUser(LoginType loginType, User user) {
+    late LoginType type;
+    switch (user.providerData[0].providerId) {
+      case "google.com":
+        type = LoginType.google;
+        break;
+      case "facebook.com":
+        type = LoginType.facebook;
+        break;
+      case "apple.com":
+        type = LoginType.apple;
+        break;
+      default:
+        type = LoginType.email;
+    }
     return AuthUser(
         name: user.providerData.first.displayName,
         email: user.email,
         emailVerified: user.emailVerified,
-        photoURL: user.providerData.first.photoURL);
+        photoURL: user.providerData.first.photoURL,
+        loginType: type);
   }
 
   _onAuthSuccess(LoginType loginType, OnAuthSuccess onAuthSuccess,
       OnAuthSuccessAndEmailToVerify? emailToVerify, User user) async {
-    AuthUser authUser = _getAuthUser(user);
+    AuthUser authUser = _getAuthUser(loginType, user);
     Fx.instance.log.i("Login with ${loginType.toString()} successful");
     Fx.instance.log.d(
         "User Data = Name: ${authUser.name}, Email: ${authUser.email}, Email Verified: ${authUser.emailVerified}");

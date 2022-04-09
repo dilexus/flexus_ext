@@ -4,8 +4,11 @@ import 'package:flexus_ext/app/enums/login_type.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:network_to_file_image/network_to_file_image.dart';
 
+import '../../configs/gen/locales.g.dart';
 import '../../flexus.dart';
 
 class FxUIUtil {
@@ -115,5 +118,27 @@ class FxUIUtil {
             )),
       );
     }
+  }
+
+  getProfileImage(ImageSource imageSource) async {
+    Get.back();
+    final pickedFile = await (ImagePicker().pickImage(source: imageSource));
+    File? croppedFile = await (ImageCropper().cropImage(
+        sourcePath: pickedFile!.path,
+        maxWidth: 512,
+        maxHeight: 512,
+        aspectRatioPresets: [
+          CropAspectRatioPreset.square,
+        ],
+        androidUiSettings: AndroidUiSettings(
+            toolbarTitle: LocaleKeys.dialogs_crop_image.tr,
+            toolbarColor: Colors.black,
+            toolbarWidgetColor: Colors.white,
+            initAspectRatio: CropAspectRatioPreset.square,
+            lockAspectRatio: true),
+        iosUiSettings: const IOSUiSettings(
+          minimumAspectRatio: 1.0,
+        )));
+    return File(croppedFile!.path);
   }
 }

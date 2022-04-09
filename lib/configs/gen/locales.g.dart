@@ -1,6 +1,6 @@
 // DO NOT EDIT. This is code generated via package:get_cli/get_cli.dart
 
-// ignore_for_file: lines_longer_than_80_chars, constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
 // ignore: avoid_classes_with_only_static_members
 class AppTranslation {
   static Map<String, Map<String, String>> translations = {
@@ -57,6 +57,7 @@ class LocaleKeys {
   static const auth_errors_facebook_sign_in_canceled =
       'auth_errors_facebook_sign_in_canceled';
   static const auth_errors_too_many_requests = 'auth_errors_too_many_requests';
+  static const dialogs_crop_image = 'dialogs_crop_image';
 }
 
 class Locales {
@@ -112,5 +113,6 @@ class Locales {
         'Failed to front in with Facebook.',
     'auth_errors_too_many_requests':
         'Too many requests to verify the email. Please try again in a while',
+    'dialogs_crop_image': 'Crop Image',
   };
 }
