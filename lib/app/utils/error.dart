@@ -32,11 +32,11 @@ class FxErrorUtil {
       default:
         message = LocaleKeys.auth_errors_sign_in_failure.tr;
     }
-    Fx.instance.dialogUtil.showOKDialog(message: message, title: _title);
+    Fx.instance.dialogUtil.showOKDialog(message: message, title: _title.tr);
   }
 
   void handleGenericAuthError(Object exception) {
     Fx.instance.dialogUtil.showOKDialog(
-        message: LocaleKeys.auth_errors_sign_in_failure.tr, title: _title);
+        message: LocaleKeys.auth_errors_sign_in_failure.tr, title: _title.tr);
   }
 }

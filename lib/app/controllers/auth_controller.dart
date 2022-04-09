@@ -19,13 +19,12 @@ class AuthController extends GetxController {
     Fx.instance.log.i("Login with ${loginType.toString()} clicked");
     switch (loginType) {
       case LoginType.facebook:
-        // TODO: Handle this case.
+        await _signInWithFacebook(loginType, success, failed);
         break;
       case LoginType.google:
         await _signInWithGoogle(loginType, success, failed);
         break;
       case LoginType.apple:
-        await _signInWithFacebook(loginType, success, failed);
         break;
       case LoginType.email:
         // TODO: Handle this case.
@@ -73,12 +72,18 @@ class AuthController extends GetxController {
       {required OnAuthSuccess success,
       required OnAuthSuccessAndEmailToVerify emailToVerify,
       required OnAuthFailed failed}) async {
-    await FirebaseAuth.instance.currentUser?.reload();
-    User? user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      _onAuthSuccess(LoginType.auto, success, emailToVerify, user);
-    } else {
-      _onAuthFailed(LoginType.auto, failed, Exception("User not found"));
+    try {
+      await FirebaseAuth.instance.currentUser?.reload();
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        _onAuthSuccess(LoginType.auto, success, emailToVerify, user);
+      } else {
+        _onAuthFailed(LoginType.auto, failed, Exception("User not found"));
+      }
+    } on FirebaseAuthException catch (ex) {
+      _onAuthFailed(LoginType.email, failed, ex);
+    } catch (ex) {
+      _onAuthFailed(LoginType.email, failed, ex);
     }
   }
 
@@ -136,12 +141,15 @@ class AuthController extends GetxController {
           userCredential =
               await FirebaseAuth.instance.signInWithCredential(credential);
           final user = userCredential.user;
+          _onAuthSuccess(loginType, onAuthSuccess, null, user!);
           break;
         case LoginStatus.cancelled:
+          Fx.instance.log.w(result.message);
           _onAuthFailed(loginType, onAuthFailed,
               Exception("Facebook login is cancelled"));
           break;
         case LoginStatus.failed:
+          Fx.instance.log.w(result.message);
           _onAuthFailed(
               loginType, onAuthFailed, Exception("Facebook login is failed"));
           break;
