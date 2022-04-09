@@ -137,8 +137,7 @@ class FxUIUtil {
 
   Widget getTextBox(BuildContext context,
       {required String name,
-      required String label,
-      required Icon icon,
+      required InputDecoration decoration,
       required String? Function(String?) validators,
       bool obscureText = false,
       EdgeInsets padding = const EdgeInsets.only(top: 12.0, bottom: 12.0)}) {
@@ -146,10 +145,7 @@ class FxUIUtil {
       padding: padding,
       child: FormBuilderTextField(
           name: name,
-          decoration: Fx.instance.uiUtil.getAuthInputDecorator(
-            label,
-            icon: icon,
-          ),
+          decoration: decoration,
           obscureText: obscureText,
           validator: validators),
     );
