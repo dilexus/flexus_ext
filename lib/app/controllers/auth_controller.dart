@@ -1,7 +1,12 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:crypto/crypto.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../../flexus.dart';
 import '../base/auth.dart';
@@ -25,13 +30,10 @@ class AuthController extends GetxController {
         await _signInWithGoogle(loginType, success, failed);
         break;
       case LoginType.apple:
+        await _signInWithApple(loginType, success, failed);
         break;
-      case LoginType.email:
-        // TODO: Handle this case.
-        break;
-      case LoginType.auto:
-        // TODO: Handle this case.
-        break;
+      default:
+        Fx.instance.log.w("Invalid social login type");
     }
   }
 
@@ -80,8 +82,6 @@ class AuthController extends GetxController {
       } else {
         _onAuthFailed(LoginType.auto, failed, Exception("User not found"));
       }
-    } on FirebaseAuthException catch (ex) {
-      _onAuthFailed(LoginType.email, failed, ex);
     } catch (ex) {
       _onAuthFailed(LoginType.email, failed, ex);
     }
@@ -155,6 +155,51 @@ class AuthController extends GetxController {
           break;
         default:
       }
+    } catch (ex) {
+      _onAuthFailed(loginType, onAuthFailed, ex);
+    }
+  }
+
+  _signInWithApple(LoginType loginType, OnAuthSuccess onAuthSuccess,
+      OnAuthFailed onAuthFailed) async {
+    try {
+      final nonce = Fx.instance.commonUtil.createNonce(32);
+      final nativeAppleCred = Platform.isIOS
+          ? await SignInWithApple.getAppleIDCredential(
+              scopes: [
+                AppleIDAuthorizationScopes.email,
+                AppleIDAuthorizationScopes.fullName,
+                AppleIDAuthorizationScopes.values.first,
+                AppleIDAuthorizationScopes.values.last,
+              ],
+              nonce: sha256.convert(utf8.encode(nonce)).toString(),
+            )
+          : await SignInWithApple.getAppleIDCredential(
+              scopes: [
+                AppleIDAuthorizationScopes.email,
+                AppleIDAuthorizationScopes.fullName,
+                AppleIDAuthorizationScopes.values.first,
+                AppleIDAuthorizationScopes.values.last,
+              ],
+              webAuthenticationOptions: WebAuthenticationOptions(
+                redirectUri:
+                    Uri.parse(Fx.instance.context.appleRedirectURL ?? ""),
+                clientId: Fx.instance.context.appleBundleId ?? "",
+              ),
+              nonce: sha256.convert(utf8.encode(nonce)).toString(),
+            );
+
+      var credentialsApple = OAuthCredential(
+        providerId: "apple.com",
+        signInMethod: "oauth",
+        accessToken: nativeAppleCred.identityToken,
+        idToken: nativeAppleCred.identityToken,
+        rawNonce: nonce,
+      );
+      User? user =
+          (await FirebaseAuth.instance.signInWithCredential(credentialsApple))
+              .user;
+      _onAuthSuccess(loginType, onAuthSuccess, null, user!);
     } catch (ex) {
       _onAuthFailed(loginType, onAuthFailed, ex);
     }
