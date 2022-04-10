@@ -273,6 +273,7 @@ class AuthController extends GetxController {
         type = LoginType.email;
     }
     return AuthUser(
+        id: user.uid,
         name: user.providerData.first.displayName,
         email: user.email,
         emailVerified: user.emailVerified,
@@ -305,10 +306,12 @@ class AuthController extends GetxController {
       LoginType loginType, OnAuthFailed onAuthFailed, Object exception) {
     Auth.instance.authUser = null;
     Fx.instance.log.w("Login with ${loginType.toString()} failed");
-    Fx.instance.log.e(exception.toString());
+
     if (exception is FirebaseAuthException) {
+      Fx.instance.log.w(exception.toString());
       Fx.instance.errorUtil.handleFirebaseException(exception);
     } else {
+      Fx.instance.log.e(exception.toString());
       Fx.instance.errorUtil.handleGenericException(exception);
     }
     onAuthFailed(exception);
