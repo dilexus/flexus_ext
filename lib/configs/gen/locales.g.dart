@@ -57,6 +57,7 @@ class LocaleKeys {
   static const auth_errors_facebook_sign_in_canceled =
       'auth_errors_facebook_sign_in_canceled';
   static const auth_errors_too_many_requests = 'auth_errors_too_many_requests';
+  static const auth_errors_unauthorized = 'auth_errors_unauthorized';
   static const dialogs_crop_image = 'dialogs_crop_image';
 }
 
@@ -113,6 +114,8 @@ class Locales {
         'Failed to front in with Facebook.',
     'auth_errors_too_many_requests':
         'Too many requests to verify the email. Please try again in a while',
+    'auth_errors_unauthorized':
+        'User is not authorized to perform the desired action',
     'dialogs_crop_image': 'Crop Image',
   };
 }

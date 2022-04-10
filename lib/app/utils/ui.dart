@@ -29,6 +29,12 @@ class FxUIUtil {
       enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(color: Get.theme.colorScheme.onBackground),
       ),
+      errorBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Get.theme.colorScheme.error),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Get.theme.colorScheme.error),
+      ),
     );
   }
 
@@ -84,7 +90,6 @@ class FxUIUtil {
   Widget getTextDropDown(BuildContext context,
       {required String name,
       required String label,
-      required String hint,
       required Icon icon,
       required List<String> items,
       required String? Function(String?) validators,
@@ -98,11 +103,6 @@ class FxUIUtil {
         name: name,
         initialValue: initialValue,
         decoration: InputDecoration(
-          labelStyle: TextStyle(
-            color: enabled
-                ? Get.theme.colorScheme.onBackground
-                : Get.theme.disabledColor,
-          ),
           labelText: label,
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Get.theme.colorScheme.secondary),
@@ -110,18 +110,17 @@ class FxUIUtil {
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Get.theme.colorScheme.onBackground),
           ),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Get.theme.colorScheme.error),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Get.theme.colorScheme.error),
+          ),
           border: const OutlineInputBorder(borderSide: BorderSide()),
-          contentPadding: const EdgeInsets.all(12.0),
+          contentPadding: const EdgeInsets.all(4.0),
           prefixIcon: icon,
         ),
         allowClear: allowClear,
-        hint: Text(
-          hint,
-          style: TextStyle(color: Get.theme.colorScheme.onBackground),
-        ),
-        style: TextStyle(
-          color: Get.theme.colorScheme.onBackground,
-        ),
         validator: validators,
         enabled: enabled,
         dropdownColor: Get.theme.colorScheme.background,
@@ -139,11 +138,13 @@ class FxUIUtil {
       {required String name,
       required InputDecoration decoration,
       required String? Function(String?) validators,
+      String? initialValue = "",
       bool obscureText = false,
       EdgeInsets padding = const EdgeInsets.only(top: 12.0, bottom: 12.0)}) {
     return Padding(
       padding: padding,
       child: FormBuilderTextField(
+          initialValue: initialValue,
           name: name,
           decoration: decoration,
           obscureText: obscureText,

@@ -103,8 +103,8 @@ class AuthController extends GetxController {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
       resetSuccess();
     } on FirebaseAuthException catch (exception) {
-      Fx.instance.log.w(exception.toString());
-      Fx.instance.errorUtil.handleFirebaseErrors(exception);
+      Fx.instance.log.e(exception.toString());
+      Fx.instance.errorUtil.handleFirebaseException(exception);
       resetFailed();
     }
   }
@@ -149,7 +149,7 @@ class AuthController extends GetxController {
               Exception("Facebook login is cancelled"));
           break;
         case LoginStatus.failed:
-          Fx.instance.log.w(result.message);
+          Fx.instance.log.e(result.message);
           _onAuthFailed(
               loginType, onAuthFailed, Exception("Facebook login is failed"));
           break;
@@ -213,6 +213,50 @@ class AuthController extends GetxController {
     Fx.instance.log.i("User sign out success");
   }
 
+  Future<void> updateUserInfo(LoginType loginType,
+      {required OnUserProfileUpdateSuccess success,
+      required OnUserProfileUpdateFailed failed,
+      String? name,
+      String? password,
+      File? photo}) async {
+    try {
+      Fx.instance.log.i("Updating user info");
+
+      User user = FirebaseAuth.instance.currentUser!..reload();
+
+      if (password != null && password.isNotEmpty) {
+        await user.updatePassword(password);
+        Fx.instance.log.i("Password saved successful");
+      }
+
+      if (photo != null && photo.path != "") {
+        String photoUrl = await Fx.instance.firebaseUtil
+            .addImageToStorage("user/profile/${user.uid}.jpg", photo);
+        await user.updatePhotoURL(photoUrl);
+        Fx.instance.log.i("Photo saved successful");
+      }
+
+      if (name != null && name.isNotEmpty) {
+        await user.updateDisplayName(name);
+        Fx.instance.log.i("Name saved successful");
+      }
+      user = FirebaseAuth.instance.currentUser!
+        ..reload().then((value) {
+          AuthUser authUser = _getAuthUser(loginType, user);
+          Auth.instance.authUser = authUser;
+          success(authUser);
+        });
+    } on FirebaseException catch (ex) {
+      Fx.instance.log.e(ex);
+      Fx.instance.errorUtil.handleFirebaseException(ex);
+      failed(ex);
+    } catch (ex) {
+      Fx.instance.log.e(ex);
+      Fx.instance.errorUtil.handleGenericException(ex);
+      failed(ex);
+    }
+  }
+
   AuthUser _getAuthUser(LoginType loginType, User user) {
     late LoginType type;
     switch (user.providerData[0].providerId) {
@@ -261,17 +305,19 @@ class AuthController extends GetxController {
       LoginType loginType, OnAuthFailed onAuthFailed, Object exception) {
     Auth.instance.authUser = null;
     Fx.instance.log.w("Login with ${loginType.toString()} failed");
-    Fx.instance.log.w(exception.toString());
+    Fx.instance.log.e(exception.toString());
     if (exception is FirebaseAuthException) {
-      Fx.instance.errorUtil.handleFirebaseErrors(exception);
+      Fx.instance.errorUtil.handleFirebaseException(exception);
     } else {
-      Fx.instance.errorUtil.handleGenericAuthError(exception);
+      Fx.instance.errorUtil.handleGenericException(exception);
     }
     onAuthFailed(exception);
   }
 }
 
 typedef OnAuthSuccess = Function(AuthUser user);
+typedef OnUserProfileUpdateSuccess = Function(AuthUser user);
+typedef OnUserProfileUpdateFailed = Function(Object exception);
 typedef OnAuthSuccessAndEmailToVerify = Function(AuthUser user);
 typedef OnAuthFailed = Function(Object exception);
 typedef OnSignOut = Function();

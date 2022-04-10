@@ -45,7 +45,8 @@
     "google_sign_in_failed": "Failed to front in with Google.",
     "facebook_sign_in_failed": "Failed to front in with Facebook.",
     "facebook_sign_in_canceled": "Failed to front in with Facebook.",
-    "too_many_requests": "Too many requests to verify the email. Please try again in a while"
+    "too_many_requests": "Too many requests to verify the email. Please try again in a while",
+    "unauthorized": "User is not authorized to perform the desired action"
   },
 
   "dialogs": {

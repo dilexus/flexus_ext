@@ -8,7 +8,7 @@ class FxErrorUtil {
   final String _title;
   FxErrorUtil(this._title);
 
-  void handleFirebaseErrors(FirebaseAuthException ex) {
+  void handleFirebaseException(FirebaseException ex) {
     late String message;
     switch (ex.code) {
       case "user-not-found":
@@ -29,13 +29,16 @@ class FxErrorUtil {
       case "too-many-requests":
         message = LocaleKeys.auth_errors_too_many_requests.tr;
         break;
+      case "unauthorized":
+        message = LocaleKeys.auth_errors_unauthorized.tr;
+        break;
       default:
         message = LocaleKeys.auth_errors_sign_in_failure.tr;
     }
     Fx.instance.dialogUtil.showOKDialog(message: message, title: _title.tr);
   }
 
-  void handleGenericAuthError(Object exception) {
+  void handleGenericException(Object exception) {
     Fx.instance.dialogUtil.showOKDialog(
         message: LocaleKeys.auth_errors_sign_in_failure.tr, title: _title.tr);
   }

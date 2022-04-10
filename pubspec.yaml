@@ -24,6 +24,7 @@ dependencies:
 
   #Firebase
   firebase_auth: ^3.3.13
+  firebase_storage: ^10.2.11
 
   #UI
   font_awesome_flutter: ^10.1.0

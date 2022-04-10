@@ -6,6 +6,7 @@ import 'package:flexus_ext/app/utils/ui.dart';
 import 'package:logger/logger.dart';
 
 import 'app/utils/common.dart';
+import 'app/utils/firebase.dart';
 
 class Fx {
   Fx._privateConstructor();
@@ -17,16 +18,25 @@ class Fx {
   late FxStringUtil stringUtil;
   late FxCommonUtil commonUtil;
   late FxUIUtil uiUtil;
+  late FxFirebaseUtil firebaseUtil;
   late Logger log;
   late FxContext context;
 
-  int(FxDialogUtil dialogUtil, FxErrorUtil errorUtil, FxStringUtil stringUtil,
-      FxCommonUtil commonUtil, FxUIUtil uiUtil, Logger log, FxContext context) {
+  int(
+      FxDialogUtil dialogUtil,
+      FxErrorUtil errorUtil,
+      FxStringUtil stringUtil,
+      FxCommonUtil commonUtil,
+      FxUIUtil uiUtil,
+      FxFirebaseUtil firebaseUtil,
+      Logger log,
+      FxContext context) {
     this.dialogUtil = dialogUtil;
     this.errorUtil = errorUtil;
     this.stringUtil = stringUtil;
     this.commonUtil = commonUtil;
     this.uiUtil = uiUtil;
+    this.firebaseUtil = firebaseUtil;
     this.log = log;
     this.context = context;
   }
