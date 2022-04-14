@@ -7,6 +7,7 @@ class AuthUser {
   bool? emailVerified;
   String? provider;
   String? photoURL;
+  String? idToken;
   LoginType? loginType;
 
   AuthUser(
@@ -16,5 +17,6 @@ class AuthUser {
       this.emailVerified,
       this.provider,
       this.photoURL,
+      this.idToken,
       this.loginType});
 }

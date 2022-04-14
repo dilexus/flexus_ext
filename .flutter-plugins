@@ -1,14 +1,16 @@
 # This is a generated file; do not edit or check into version control.
-firebase_auth=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_auth-3.3.13/
-firebase_auth_web=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_auth_web-3.3.11/
+firebase_auth=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_auth-3.3.14/
+firebase_auth_web=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_auth_web-3.3.12/
 firebase_core=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_core-1.13.1/
-firebase_core_web=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-1.6.1/
-firebase_storage=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_storage-10.2.11/
-firebase_storage_web=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_storage_web-3.2.11/
-flutter_facebook_auth=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_auth-4.1.2/
-flutter_facebook_auth_web=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_auth_web-3.0.0+1/
+firebase_core_web=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-1.6.2/
+firebase_storage=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_storage-10.2.12/
+firebase_storage_web=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_storage_web-3.2.12/
+flutter_facebook_auth=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_auth-4.2.1/
+flutter_facebook_auth_web=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_auth_web-3.1.0/
 flutter_plugin_android_lifecycle=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-2.0.5/
-google_sign_in=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/google_sign_in-5.2.4/
+google_sign_in=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/google_sign_in-5.3.0/
+google_sign_in_android=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/google_sign_in_android-5.2.5/
+google_sign_in_ios=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/google_sign_in_ios-5.2.5/
 google_sign_in_web=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/google_sign_in_web-0.10.0+5/
 image_cropper=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/image_cropper-1.5.1/
 image_picker=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/image_picker-0.8.5/

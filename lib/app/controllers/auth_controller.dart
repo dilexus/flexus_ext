@@ -103,7 +103,7 @@ class AuthController extends GetxController {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
       resetSuccess();
     } on FirebaseAuthException catch (exception) {
-      Fx.instance.log.e(exception.toString());
+      Fx.instance.log.w(exception.toString());
       Fx.instance.errorUtil.handleFirebaseException(exception);
       resetFailed();
     }
@@ -241,23 +241,23 @@ class AuthController extends GetxController {
         Fx.instance.log.i("Name saved successful");
       }
       user = FirebaseAuth.instance.currentUser!
-        ..reload().then((value) {
-          AuthUser authUser = _getAuthUser(loginType, user);
+        ..reload().then((value) async {
+          AuthUser authUser = await _getAuthUser(loginType, user);
           Auth.instance.authUser = authUser;
           success(authUser);
         });
     } on FirebaseException catch (ex) {
-      Fx.instance.log.e(ex);
+      Fx.instance.log.w(ex);
       Fx.instance.errorUtil.handleFirebaseException(ex);
       failed(ex);
     } catch (ex) {
-      Fx.instance.log.e(ex);
+      Fx.instance.log.w(ex);
       Fx.instance.errorUtil.handleGenericException(ex);
       failed(ex);
     }
   }
 
-  AuthUser _getAuthUser(LoginType loginType, User user) {
+  Future<AuthUser> _getAuthUser(LoginType loginType, User user) async {
     late LoginType type;
     switch (user.providerData[0].providerId) {
       case "google.com":
@@ -272,18 +272,20 @@ class AuthController extends GetxController {
       default:
         type = LoginType.email;
     }
+    String idToken = await user.getIdToken();
     return AuthUser(
         id: user.uid,
         name: user.providerData.first.displayName,
         email: user.email,
         emailVerified: user.emailVerified,
         photoURL: user.providerData.first.photoURL,
+        idToken: idToken,
         loginType: type);
   }
 
   _onAuthSuccess(LoginType loginType, OnAuthSuccess onAuthSuccess,
       OnAuthSuccessAndEmailToVerify? emailToVerify, User user) async {
-    AuthUser authUser = _getAuthUser(loginType, user);
+    AuthUser authUser = await _getAuthUser(loginType, user);
     Fx.instance.log.i("Login with ${loginType.toString()} successful");
     Fx.instance.log.d(
         "User Data = Name: ${authUser.name}, Email: ${authUser.email}, Email Verified: ${authUser.emailVerified}");
@@ -307,11 +309,11 @@ class AuthController extends GetxController {
     Auth.instance.authUser = null;
     Fx.instance.log.w("Login with ${loginType.toString()} failed");
 
-    if (exception is FirebaseAuthException) {
+    if (exception is FirebaseException) {
       Fx.instance.log.w(exception.toString());
       Fx.instance.errorUtil.handleFirebaseException(exception);
     } else {
-      Fx.instance.log.e(exception.toString());
+      Fx.instance.log.w(exception.toString());
       Fx.instance.errorUtil.handleGenericException(exception);
     }
     onAuthFailed(exception);

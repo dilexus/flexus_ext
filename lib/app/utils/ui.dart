@@ -74,13 +74,13 @@ class FxUIUtil {
     return SizedBox(
         height: 48.0,
         child: ElevatedButton(
-            child: Icon(iconData, color: Get.theme.colorScheme.secondary),
+            child: Icon(iconData, color: Get.theme.colorScheme.primary),
             style: ElevatedButton.styleFrom(
               primary: Get.theme.colorScheme.background,
               elevation: 0,
               shape: RoundedRectangleBorder(
                 side: BorderSide(
-                    width: 1.0, color: Get.theme.colorScheme.secondary),
+                    width: 1.0, color: Get.theme.colorScheme.primary),
                 borderRadius: BorderRadius.circular(8.0),
               ),
             ),
