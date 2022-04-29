@@ -1,6 +1,6 @@
 name: flexus_ext
 description: A new Flutter project.
-version: 1.0.10+13
+version: 1.0.11+14
 homepage:
 
 publish_to: 'none'
@@ -16,15 +16,21 @@ dependencies:
 #  flexus_core:
 #    path: ../flexus_core/
 
+  #Flexus Core
+  flexus_core:
+    git:
+      url: https://github.com/dilexus/flexus_core.git
+      ref: v1.0.19
+
   #Dev
-  logger: ^1.1.0
   get: ^4.6.1
   package_info_plus: ^1.4.2
   network_to_file_image: ^3.1.0
+  logger: ^1.1.0
 
   #Firebase
-  firebase_auth: ^3.3.14
-  firebase_storage: ^10.2.12
+  firebase_auth: ^3.3.16
+  firebase_storage: ^10.2.14
 
   #UI
   font_awesome_flutter: ^10.1.0
@@ -35,12 +41,12 @@ dependencies:
 
   #Form:
   flutter_form_builder: ^7.1.1
-  form_builder_validators: ^8.1.0
+  form_builder_validators: ^8.1.1
 
   #Auth
-  crypto: ^3.0.1
+  crypto: ^3.0.2
   google_sign_in: ^5.3.0
-  flutter_facebook_auth: ^4.2.1
+  flutter_facebook_auth: ^4.3.0
   sign_in_with_apple: ^3.3.0
 
 dev_dependencies:

@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flexus_core/flexus.dart';
 import 'package:get/get.dart';
 
 import '../../configs/gen/locales.g.dart';
-import '../../flexus.dart';
 
 class FxErrorUtil {
   final String _title;
@@ -35,11 +35,11 @@ class FxErrorUtil {
       default:
         message = LocaleKeys.auth_errors_sign_in_failure.tr;
     }
-    Fx.instance.dialogUtil.showOKDialog(message: message, title: _title.tr);
+    Fc.instance.dialog.showOKDialog(message: message, title: _title.tr);
   }
 
   void handleGenericException(Object exception) {
-    Fx.instance.dialogUtil.showOKDialog(
+    Fc.instance.dialog.showOKDialog(
         message: LocaleKeys.auth_errors_sign_in_failure.tr, title: _title.tr);
   }
 }

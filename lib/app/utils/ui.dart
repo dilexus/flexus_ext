@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flexus_core/flexus.dart';
 import 'package:flexus_ext/app/enums/login_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -10,7 +11,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:network_to_file_image/network_to_file_image.dart';
 
 import '../../configs/gen/locales.g.dart';
-import '../../flexus.dart';
 
 class FxUIUtil {
   getAuthInputDecorator(String labelText,
@@ -183,7 +183,7 @@ class FxUIUtil {
             radius: 50,
             backgroundColor: Colors.white,
             child: Text(
-              Fx.instance.stringUtil
+              Fc.instance.stringUtil
                   .getInitials(string: name ?? "-", limitTo: 2),
               style: TextStyle(
                   fontSize: 30,
