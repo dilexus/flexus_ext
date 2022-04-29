@@ -1,7 +1,6 @@
 import 'package:flexus_ext/app/base/context.dart';
 import 'package:flexus_ext/app/utils/error.dart';
 import 'package:flexus_ext/app/utils/ui.dart';
-import 'package:logger/logger.dart';
 
 import 'app/utils/firebase.dart';
 
@@ -15,7 +14,7 @@ class Fx {
   late FxContext context;
 
   init(FxErrorUtil errorUtil, FxUIUtil uiUtil, FxFirebaseUtil firebaseUtil,
-      Logger log, FxContext context) {
+      FxContext context) {
     this.errorUtil = errorUtil;
     this.uiUtil = uiUtil;
     this.firebaseUtil = firebaseUtil;
