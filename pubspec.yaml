@@ -20,7 +20,7 @@ dependencies:
   flexus_core:
     git:
       url: https://github.com/dilexus/flexus_core.git
-      ref: v1.0.19
+      ref: v1.0.20
 
   #Dev
   get: ^4.6.1
@@ -37,7 +37,7 @@ dependencies:
 
   #Image
   image_picker: ^0.8.5
-  image_cropper: ^1.5.1
+  image_cropper: ^2.0.0
 
   #Form:
   flutter_form_builder: ^7.1.1
