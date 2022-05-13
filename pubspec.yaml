@@ -20,24 +20,24 @@ dependencies:
   flexus_core:
     git:
       url: https://github.com/dilexus/flexus_core.git
-      ref: v1.0.20
+      ref: v1.0.21
 
   #Dev
-  get: ^4.6.1
+  get: ^4.6.3
   package_info_plus: ^1.4.2
   network_to_file_image: ^3.1.0
   logger: ^1.1.0
 
   #Firebase
-  firebase_auth: ^3.3.16
-  firebase_storage: ^10.2.14
+  firebase_auth: ^3.3.17
+  firebase_storage: ^10.2.15
 
   #UI
   font_awesome_flutter: ^10.1.0
 
   #Image
-  image_picker: ^0.8.5
-  image_cropper: ^2.0.0
+  image_picker: ^0.8.5+3
+  image_cropper: ^2.0.2
 
   #Form:
   flutter_form_builder: ^7.1.1
@@ -45,14 +45,14 @@ dependencies:
 
   #Auth
   crypto: ^3.0.2
-  google_sign_in: ^5.3.0
-  flutter_facebook_auth: ^4.3.0
+  google_sign_in: ^5.3.1
+  flutter_facebook_auth: ^4.3.4
   sign_in_with_apple: ^3.3.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.4
+  flutter_lints: ^2.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
