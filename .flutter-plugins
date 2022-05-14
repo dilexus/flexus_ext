@@ -1,10 +1,10 @@
 # This is a generated file; do not edit or check into version control.
-firebase_auth=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_auth-3.3.17/
-firebase_auth_web=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_auth_web-3.3.14/
+firebase_auth=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_auth-3.3.18/
+firebase_auth_web=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_auth_web-3.3.15/
 firebase_core=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_core-1.13.1/
-firebase_core_web=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-1.6.3/
-firebase_storage=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_storage-10.2.15/
-firebase_storage_web=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_storage_web-3.2.14/
+firebase_core_web=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-1.6.4/
+firebase_storage=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_storage-10.2.16/
+firebase_storage_web=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/firebase_storage_web-3.2.15/
 flutter_facebook_auth=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_auth-4.3.4/
 flutter_facebook_auth_web=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_auth_web-3.1.2/
 flutter_plugin_android_lifecycle=/Users/chatura/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-2.0.5/
