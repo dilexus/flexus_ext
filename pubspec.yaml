@@ -20,7 +20,7 @@ dependencies:
   flexus_core:
     git:
       url: https://github.com/dilexus/flexus_core.git
-      ref: v2.0.1
+      ref: v3.3.0
 
   #Dev
   get: ^4.6.3
