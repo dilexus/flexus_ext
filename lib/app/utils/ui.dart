@@ -43,12 +43,12 @@ class FxUIUtil {
       width: double.infinity,
       height: 48.0,
       child: ElevatedButton(
-          child: Text(text),
           style: ElevatedButton.styleFrom(
             elevation: 0,
             primary: Get.theme.colorScheme.primary,
           ),
-          onPressed: onPressed),
+          onPressed: onPressed,
+          child: Text(text)),
     );
   }
 
@@ -74,7 +74,6 @@ class FxUIUtil {
     return SizedBox(
         height: 48.0,
         child: ElevatedButton(
-            child: Icon(iconData, color: Get.theme.colorScheme.primary),
             style: ElevatedButton.styleFrom(
               primary: Get.theme.colorScheme.background,
               elevation: 0,
@@ -84,7 +83,8 @@ class FxUIUtil {
                 borderRadius: BorderRadius.circular(8.0),
               ),
             ),
-            onPressed: () => onPressed(loginType)));
+            onPressed: () => onPressed(loginType),
+            child: Icon(iconData, color: Get.theme.colorScheme.primary)));
   }
 
   Widget getTextDropDown(BuildContext context,
