@@ -50,7 +50,6 @@ dependencies:
   device_preview: any
   device_preview_screenshot: any
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
