@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
 
   #Dev
+  get: ^4.6.3
   package_info_plus: ^1.4.2
   network_to_file_image: ^4.0.1
 
@@ -39,16 +40,9 @@ dependencies:
 # flexus_core:
 #   path: ../flexus_core/
   #Flexus Core
-  flexus_core: ^3.3.2+1
+  flexus_core: ^3.3.23
 
-  #Flexus Core Dep
-  get: any
-  logger: any
-  sizer: any
-  lifecycle: any
-  loading_overlay: any
-  device_preview: any
-  device_preview_screenshot: any
+
 
 dev_dependencies:
   flutter_test:
