@@ -93,6 +93,7 @@ class FxUIUtil {
       required Icon icon,
       required List<String> items,
       required String? Function(String?) validators,
+      required Key key,
       bool enabled = true,
       bool allowClear = false,
       String initialValue = "",
@@ -101,6 +102,7 @@ class FxUIUtil {
       padding: padding,
       child: FormBuilderDropdown(
         name: name,
+        key: key,
         initialValue: initialValue,
         decoration: InputDecoration(
           labelText: label,
@@ -136,6 +138,7 @@ class FxUIUtil {
 
   Widget getTextBox(BuildContext context,
       {required String name,
+      required Key key,
       required InputDecoration decoration,
       required String? Function(String?) validators,
       String? initialValue = "",
@@ -146,6 +149,7 @@ class FxUIUtil {
       child: FormBuilderTextField(
           initialValue: initialValue,
           name: name,
+          key: key,
           decoration: decoration,
           obscureText: obscureText,
           validator: validators),
