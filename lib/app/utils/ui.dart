@@ -38,11 +38,13 @@ class FxUIUtil {
     );
   }
 
-  Widget getAuthButton(String text, VoidCallback onPressed) {
+  Widget getAuthButton(String text, VoidCallback onPressed,
+      {required Key key}) {
     return SizedBox(
       width: double.infinity,
       height: 48.0,
       child: ElevatedButton(
+          key: key,
           style: ElevatedButton.styleFrom(
             elevation: 0,
             primary: Get.theme.colorScheme.primary,
@@ -52,7 +54,8 @@ class FxUIUtil {
     );
   }
 
-  Widget getAuthSocialAuthButton(LoginType loginType, Function onPressed) {
+  Widget getAuthSocialAuthButton(LoginType loginType, Function onPressed,
+      {required Key key}) {
     IconData iconData;
     switch (loginType) {
       case LoginType.facebook:
@@ -74,6 +77,7 @@ class FxUIUtil {
     return SizedBox(
         height: 48.0,
         child: ElevatedButton(
+            key: key,
             style: ElevatedButton.styleFrom(
               primary: Get.theme.colorScheme.background,
               elevation: 0,
@@ -158,9 +162,10 @@ class FxUIUtil {
 
   Widget getProfileCircularAvatar(
       String? profilePicture, String? name, BuildContext? context,
-      {File? imageFile}) {
+      {required Key key, File? imageFile}) {
     if (imageFile != null && imageFile.path != "") {
       return CircleAvatar(
+          key: key,
           radius: 51,
           foregroundColor: Get.theme.colorScheme.background,
           backgroundColor: Get.theme.colorScheme.onBackground,
@@ -172,6 +177,7 @@ class FxUIUtil {
           ));
     } else if (profilePicture != null) {
       return CircleAvatar(
+          key: key,
           radius: 51,
           backgroundColor: Get.theme.colorScheme.onBackground,
           child: CircleAvatar(
@@ -181,6 +187,7 @@ class FxUIUtil {
           ));
     } else {
       return CircleAvatar(
+        key: key,
         radius: 51,
         backgroundColor: Get.theme.colorScheme.onBackground,
         child: CircleAvatar(
