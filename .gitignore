@@ -31,10 +31,10 @@ build/
 
 release
 .env
-.flutter-plugins-dependencies
 android/fastlane/report.xml
 android/key.properties
 .fvm/flutter_sdk
 /ios/Runner.ipa
 /ios/Runner.app.dSYM.zip
 /ios/build/
+.flutter-plugins-dependencies
