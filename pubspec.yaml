@@ -1,6 +1,6 @@
 name: flexus_ext
 description: A new Flutter project.
-version: 3.3.17
+version: 3.3.18
 homepage: https://dilexusit.com
 
 environment:
@@ -32,7 +32,7 @@ dependencies:
   form_builder_validators: ^8.1.1
 
   #Auth
-  crypto: ^3.0.2
+  crypto: ^3.0.1
   google_sign_in: ^5.3.2
   flutter_facebook_auth: ^4.3.4
   sign_in_with_apple: ^4.0.0
@@ -40,7 +40,7 @@ dependencies:
 # flexus_core:
 #   path: ../flexus_core/
   #Flexus Core
-  flexus_core: ^3.3.34
+  flexus_core: ^3.3.35
 
 
 
