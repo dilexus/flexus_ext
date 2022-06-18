@@ -1,10 +1,10 @@
 # This is a generated file; do not edit or check into version control.
-firebase_auth=/Users/dilan/.pub-cache/hosted/pub.dartlang.org/firebase_auth-3.3.19/
-firebase_auth_web=/Users/dilan/.pub-cache/hosted/pub.dartlang.org/firebase_auth_web-3.3.16/
+firebase_auth=/Users/dilan/.pub-cache/hosted/pub.dartlang.org/firebase_auth-3.3.20/
+firebase_auth_web=/Users/dilan/.pub-cache/hosted/pub.dartlang.org/firebase_auth_web-3.3.17/
 firebase_core=/Users/dilan/.pub-cache/hosted/pub.dartlang.org/firebase_core-1.17.1/
-firebase_core_web=/Users/dilan/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-1.6.4/
-firebase_storage=/Users/dilan/.pub-cache/hosted/pub.dartlang.org/firebase_storage-10.2.17/
-firebase_storage_web=/Users/dilan/.pub-cache/hosted/pub.dartlang.org/firebase_storage_web-3.2.16/
+firebase_core_web=/Users/dilan/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-1.6.5/
+firebase_storage=/Users/dilan/.pub-cache/hosted/pub.dartlang.org/firebase_storage-10.2.18/
+firebase_storage_web=/Users/dilan/.pub-cache/hosted/pub.dartlang.org/firebase_storage_web-3.2.17/
 flutter_facebook_auth=/Users/dilan/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_auth-4.3.4+2/
 flutter_facebook_auth_web=/Users/dilan/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_auth_web-3.1.2/
 flutter_plugin_android_lifecycle=/Users/dilan/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-2.0.6/
