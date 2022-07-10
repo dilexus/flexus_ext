@@ -22,7 +22,7 @@ class AuthController extends GetxController {
       {required OnAuthSuccess success,
       required OnAuthSuccessAndEmailToVerify emailToVerify,
       required OnAuthFailed failed}) async {
-    Fc.instance.log.i("Login with ${loginType.toString()} clicked");
+    Fc.instance.log.i('Login with ${loginType.toString()} clicked');
     switch (loginType) {
       case LoginType.facebook:
         await _signInWithFacebook(loginType, success, failed);
@@ -34,7 +34,7 @@ class AuthController extends GetxController {
         await _signInWithApple(loginType, success, failed);
         break;
       default:
-        Fc.instance.log.w("Invalid social login type");
+        Fc.instance.log.w('Invalid social login type');
     }
   }
 
@@ -81,7 +81,7 @@ class AuthController extends GetxController {
       if (user != null) {
         _onAuthSuccess(LoginType.auto, success, emailToVerify, user);
       } else {
-        _onAuthFailed(LoginType.auto, failed, Exception("User not found"));
+        _onAuthFailed(LoginType.auto, failed, Exception('User not found'));
       }
     } catch (ex) {
       _onAuthFailed(LoginType.email, failed, ex);
@@ -147,12 +147,12 @@ class AuthController extends GetxController {
         case LoginStatus.cancelled:
           Fc.instance.log.w(result.message);
           _onAuthFailed(loginType, onAuthFailed,
-              Exception("Facebook login is cancelled"));
+              Exception('Facebook login is cancelled'));
           break;
         case LoginStatus.failed:
           Fc.instance.log.e(result.message);
           _onAuthFailed(
-              loginType, onAuthFailed, Exception("Facebook login is failed"));
+              loginType, onAuthFailed, Exception('Facebook login is failed'));
           break;
         default:
       }
@@ -184,15 +184,15 @@ class AuthController extends GetxController {
               ],
               webAuthenticationOptions: WebAuthenticationOptions(
                 redirectUri:
-                    Uri.parse(Fx.instance.context.appleRedirectURL ?? ""),
-                clientId: Fx.instance.context.appleBundleId ?? "",
+                    Uri.parse(Fx.instance.context.appleRedirectURL ?? ''),
+                clientId: Fx.instance.context.appleBundleId ?? '',
               ),
               nonce: sha256.convert(utf8.encode(nonce)).toString(),
             );
 
       var credentialsApple = OAuthCredential(
-        providerId: "apple.com",
-        signInMethod: "oauth",
+        providerId: 'apple.com',
+        signInMethod: 'oauth',
         accessToken: nativeAppleCred.identityToken,
         idToken: nativeAppleCred.identityToken,
         rawNonce: nonce,
@@ -211,7 +211,7 @@ class AuthController extends GetxController {
       Auth.instance.authUser = null;
       onSignOut();
     });
-    Fc.instance.log.i("User sign out success");
+    Fc.instance.log.i('User sign out success');
   }
 
   Future<void> updateUserInfo(LoginType loginType,
@@ -221,25 +221,25 @@ class AuthController extends GetxController {
       String? password,
       File? photo}) async {
     try {
-      Fc.instance.log.i("Updating user info");
+      Fc.instance.log.i('Updating user info');
 
       User user = FirebaseAuth.instance.currentUser!..reload();
 
       if (password != null && password.isNotEmpty) {
         await user.updatePassword(password);
-        Fc.instance.log.i("Password saved successful");
+        Fc.instance.log.i('Password saved successful');
       }
 
-      if (photo != null && photo.path != "") {
+      if (photo != null && photo.path != '') {
         String photoUrl = await Fx.instance.firebaseUtil
-            .addImageToStorage("user/profile/${user.uid}.jpg", photo);
+            .addImageToStorage('user/profile/${user.uid}.jpg', photo);
         await user.updatePhotoURL(photoUrl);
-        Fc.instance.log.i("Photo saved successful");
+        Fc.instance.log.i('Photo saved successful');
       }
 
       if (name != null && name.isNotEmpty) {
         await user.updateDisplayName(name);
-        Fc.instance.log.i("Name saved successful");
+        Fc.instance.log.i('Name saved successful');
       }
       user = FirebaseAuth.instance.currentUser!
         ..reload().then((value) async {
@@ -261,13 +261,13 @@ class AuthController extends GetxController {
   Future<AuthUser> _getAuthUser(LoginType loginType, User user) async {
     late LoginType type;
     switch (user.providerData[0].providerId) {
-      case "google.com":
+      case 'google.com':
         type = LoginType.google;
         break;
-      case "facebook.com":
+      case 'facebook.com':
         type = LoginType.facebook;
         break;
-      case "apple.com":
+      case 'apple.com':
         type = LoginType.apple;
         break;
       default:
@@ -287,16 +287,16 @@ class AuthController extends GetxController {
   _onAuthSuccess(LoginType loginType, OnAuthSuccess onAuthSuccess,
       OnAuthSuccessAndEmailToVerify? emailToVerify, User user) async {
     AuthUser authUser = await _getAuthUser(loginType, user);
-    Fc.instance.log.i("Login with ${loginType.toString()} successful");
+    Fc.instance.log.i('Login with ${loginType.toString()} successful');
     Fc.instance.log.d(
-        "User Data = Name: ${authUser.name}, Email: ${authUser.email}, Email Verified: ${authUser.emailVerified}");
+        'User Data = Name: ${authUser.name}, Email: ${authUser.email}, Email Verified: ${authUser.emailVerified}');
     Auth.instance.authUser = authUser;
 
     if (emailToVerify != null) {
       if (user.emailVerified) {
         onAuthSuccess(authUser);
       } else {
-        Fc.instance.log.i("Sending verification email");
+        Fc.instance.log.i('Sending verification email');
         user.sendEmailVerification();
         emailToVerify(authUser);
       }
@@ -308,7 +308,7 @@ class AuthController extends GetxController {
   _onAuthFailed(
       LoginType loginType, OnAuthFailed onAuthFailed, Object exception) {
     Auth.instance.authUser = null;
-    Fc.instance.log.w("Login with ${loginType.toString()} failed");
+    Fc.instance.log.w('Login with ${loginType.toString()} failed');
 
     if (exception is FirebaseException) {
       Fc.instance.log.w(exception.toString());

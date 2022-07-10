@@ -3,7 +3,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 class VersionController extends GetxController {
   static VersionController get instance => Get.find();
-  final version = "".obs;
+  final version = ''.obs;
 
   @override
   Future<void> onInit() async {

@@ -100,7 +100,7 @@ class FxUIUtil {
       required Key key,
       bool enabled = true,
       bool allowClear = false,
-      String initialValue = "",
+      String initialValue = '',
       EdgeInsets padding = const EdgeInsets.only(top: 12.0, bottom: 12.0)}) {
     return Padding(
       padding: padding,
@@ -145,7 +145,7 @@ class FxUIUtil {
       required Key key,
       required InputDecoration decoration,
       required String? Function(String?) validators,
-      String? initialValue = "",
+      String? initialValue = '',
       bool obscureText = false,
       EdgeInsets padding = const EdgeInsets.only(top: 12.0, bottom: 12.0)}) {
     return Padding(
@@ -163,7 +163,7 @@ class FxUIUtil {
   Widget getProfileCircularAvatar(
       String? profilePicture, String? name, BuildContext? context,
       {required Key key, File? imageFile}) {
-    if (imageFile != null && imageFile.path != "") {
+    if (imageFile != null && imageFile.path != '') {
       return CircleAvatar(
           key: key,
           radius: 51,
@@ -195,7 +195,7 @@ class FxUIUtil {
             backgroundColor: Colors.white,
             child: Text(
               Fc.instance.stringUtil
-                  .getInitials(string: name ?? "-", limitTo: 2),
+                  .getInitials(string: name ?? '-', limitTo: 2),
               style: TextStyle(
                   fontSize: 30,
                   color: Theme.of(Get.context!).colorScheme.primary),
