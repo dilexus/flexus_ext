@@ -1,6 +1,6 @@
 name: flexus_ext
 description: Flutter framekwork to develop apps easily
-version: 3.3.34
+version: 3.3.35
 homepage: https://dilexusit.com
 
 environment:
@@ -40,7 +40,7 @@ dependencies:
 # flexus_core:
 #   path: ../flexus_core/
   #Flexus Core
-  flexus_core: ^3.3.39
+  flexus_core: ^3.3.40
 
 
 
