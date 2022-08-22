@@ -1,6 +1,6 @@
 name: flexus_ext
 description: Flutter framekwork to develop apps easily
-version: 3.3.37
+version: 3.3.38
 homepage: https://dilexusit.com
 
 environment:
@@ -13,28 +13,28 @@ dependencies:
 
   #Dev
   get: ^4.6.5
-  package_info_plus: ^1.4.3
+  package_info_plus: ^1.4.3+1
   network_to_file_image: ^4.0.1
 
   #Firebase
-  firebase_auth: ^3.6.2
-  firebase_storage: ^10.3.4
+  firebase_auth: ^3.6.4
+  firebase_storage: ^10.3.6
 
   #UI
   font_awesome_flutter: ^10.1.0
 
   #Image
   image_picker: ^0.8.5+3
-  image_cropper: ^2.0.3
+  image_cropper: ^3.0.0
 
   #Form:
-  flutter_form_builder: ^7.5.0
+  flutter_form_builder: ^7.6.0
   form_builder_validators: ^8.3.0
 
   #Auth
   crypto: ^3.0.2
-  google_sign_in: ^5.4.0
-  flutter_facebook_auth: ^4.4.0+1
+  google_sign_in: ^5.4.1
+  flutter_facebook_auth: ^4.4.1
   sign_in_with_apple: ^4.1.0
 
 # flexus_core:
