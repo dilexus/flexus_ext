@@ -47,7 +47,7 @@ class FxUIUtil {
           key: key,
           style: ElevatedButton.styleFrom(
             elevation: 0,
-            primary: Get.theme.colorScheme.primary,
+            backgroundColor: Get.theme.colorScheme.primary,
           ),
           onPressed: onPressed,
           child: Text(text)),
@@ -79,7 +79,7 @@ class FxUIUtil {
         child: ElevatedButton(
             key: key,
             style: ElevatedButton.styleFrom(
-              primary: Get.theme.colorScheme.background,
+              backgroundColor: Get.theme.colorScheme.background,
               elevation: 0,
               shape: RoundedRectangleBorder(
                 side: BorderSide(
@@ -126,7 +126,6 @@ class FxUIUtil {
           contentPadding: const EdgeInsets.all(4.0),
           prefixIcon: icon,
         ),
-        allowClear: allowClear,
         validator: validators,
         enabled: enabled,
         dropdownColor: Get.theme.colorScheme.background,
