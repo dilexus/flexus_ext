@@ -64,3 +64,6 @@
 
 ## 3.3.38
 * New Release
+
+## 3.3.39
+* New Release
