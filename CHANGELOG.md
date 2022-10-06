@@ -82,3 +82,6 @@
 
 ## 3.3.44
 * New Release
+
+## 3.3.45
+* New Release
